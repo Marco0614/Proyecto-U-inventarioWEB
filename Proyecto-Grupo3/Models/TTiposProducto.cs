@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Proyecto_Grupo3.Models
 {
@@ -11,7 +12,12 @@ namespace Proyecto_Grupo3.Models
             TProductosVendidos = new HashSet<TProductosVendido>();
         }
 
+        [Required]
+        [Display(Name = "Codigo de Tipo Producto")]
         public int CodigoTipoProducto { get; set; }
+
+        [Required]
+        [Display(Name = "Descripcion de Tipo Producto")]
         public string DescripcionTipoProducto { get; set; } = null!;
 
         public virtual ICollection<TProducto> TProductos { get; set; }

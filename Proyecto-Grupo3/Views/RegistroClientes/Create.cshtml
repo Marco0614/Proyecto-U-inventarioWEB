@@ -1,42 +1,46 @@
 ﻿@model Proyecto_Grupo3.Models.TRegistroCliente
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Crear Cliente";
 }
 
-<h1>Create</h1>
-
-<h4>TRegistroCliente</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="IdentificacionCliente" class="control-label"></label>
-                <input asp-for="IdentificacionCliente" class="form-control" />
-                <span asp-validation-for="IdentificacionCliente" class="text-danger"></span>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Crear Cliente</h1>
             </div>
-            <div class="form-group">
-                <label asp-for="NombreCompleto" class="control-label"></label>
-                <input asp-for="NombreCompleto" class="form-control" />
-                <span asp-validation-for="NombreCompleto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Correo" class="control-label"></label>
-                <input asp-for="Correo" class="form-control" />
-                <span asp-validation-for="Correo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+            <form asp-action="Create">
+                <div class="border p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="text-primary">Cliente</h2>
+                        <hr />
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="mb-3">
+                        <label asp-for="IdentificacionCliente"></label>
+                        <input asp-for="IdentificacionCliente" class="form-control" />
+                        <span asp-validation-for="IdentificacionCliente" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NombreCompleto"></label>
+                        <input asp-for="NombreCompleto" class="form-control" />
+                        <span asp-validation-for="NombreCompleto" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Correo"></label>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary" style="width:150px">Crear</button>
+                    <a asp-controller="RegistroClientes" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
+                        Volver
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</main>>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

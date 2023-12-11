@@ -1,33 +1,40 @@
 ﻿@model Proyecto_Grupo3.Models.TProducto
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Producto";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>TProducto</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreProducto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreProducto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoTipoProductoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodigoTipoProductoNavigation.CodigoTipoProducto)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="NombreCategoria" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Eliminar Producto</h1>
+            </div>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="NombreCategoria" />
+                <div class="border p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="text-primary">Producto</h2>
+                        <hr />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NombreCategoria"></label>
+                        <input asp-for="NombreCategoria" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CodigoTipoProducto"></label>
+                        <select asp-for="CodigoTipoProducto" class="form-control" asp-items="ViewBag.CodigoTipoProducto" disabled class="form-control"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NombreProducto"></label>
+                        <input asp-for="NombreProducto" disabled class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger" style="width:150px">Eliminar</button>
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
+                        Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
