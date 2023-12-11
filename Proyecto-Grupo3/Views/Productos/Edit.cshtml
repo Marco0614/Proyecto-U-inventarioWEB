@@ -1,38 +1,47 @@
 ﻿@model Proyecto_Grupo3.Models.TProducto
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar Producto";
 }
 
-<h1>Edit</h1>
-
-<h4>TProducto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <input type="hidden" asp-for="NombreCategoria" />
-            <div class="form-group">
-                <label asp-for="CodigoTipoProducto" class="control-label"></label>
-                <select asp-for="CodigoTipoProducto" class="form-control" asp-items="ViewBag.CodigoTipoProducto"></select>
-                <span asp-validation-for="CodigoTipoProducto" class="text-danger"></span>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Editar Producto</h1>
             </div>
-            <div class="form-group">
-                <label asp-for="NombreProducto" class="control-label"></label>
-                <input asp-for="NombreProducto" class="form-control" />
-                <span asp-validation-for="NombreProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
-            </div>
-        </form>
+            <form asp-action="Edit">
+                <div class="border p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="text-primary">Producto</h2>
+                        <hr />
+                    </div>
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="NombreCategoria" />
+                    <div class="mb-3">
+                        <label asp-for="NombreCategoria"></label>
+                        <input asp-for="NombreCategoria" class="form-control" />
+                        <span asp-validation-for="NombreCategoria" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CodigoTipoProducto"></label>
+                        <select asp-for="CodigoTipoProducto" class="form-control" asp-items="ViewBag.CodigoTipoProducto"></select>
+                        <span asp-validation-for="CodigoTipoProducto" class="text-danger"></span>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="NombreProducto"></label>
+                        <input asp-for="NombreProducto" class="form-control" />
+                        <span asp-validation-for="NombreProducto" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary" style="width:150px">Actualizar</button>
+                    <a asp-controller="Productos" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
+                        Volver
+                    </a>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
-
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+</main>
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

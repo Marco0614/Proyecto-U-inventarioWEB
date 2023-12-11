@@ -1,75 +1,64 @@
 ﻿@model Proyecto_Grupo3.Models.TFactura
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar Factura";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>TFactura</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoFactura)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodigoFactura)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.FechaCompra)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.FechaCompra)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.MetodoPago)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.MetodoPago)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Subtotal)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Subtotal)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Iva)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Iva)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Total)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Total)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CantidadProductos)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CantidadProductos)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoProductoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodigoProductoNavigation.CodigoProducto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdClienteNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdClienteNavigation.IdCliente)
-        </dd>
-    </dl>
-    
-    <form asp-action="Delete">
-        <input type="hidden" asp-for="IdFactura" />
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
-    </form>
-</div>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Eliminar Factura</h1>
+            </div>
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="IdFactura" />
+                <div class="border p-3 mt-4">
+                    <div class="row pb-2">
+                        <h2 class="text-primary">Factura</h2>
+                        <hr />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CodigoFactura"></label>
+                        <input asp-for="CodigoFactura" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="FechaCompra"></label>
+                        <input asp-for="FechaCompra" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="IdCliente"></label>
+                        <select asp-for="IdCliente" disabled class="form-control" asp-items="ViewBag.IdCliente"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="MetodoPago"></label>
+                        <input asp-for="MetodoPago" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Subtotal"></label>
+                        <input asp-for="Subtotal" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Iva"></label>
+                        <input asp-for="Iva" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="Total"></label>
+                        <input asp-for="Total" disabled class="form-control" />
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CodigoProducto"></label>
+                        <select asp-for="CodigoProducto" disabled class="form-control" asp-items="ViewBag.CodigoProducto"></select>
+                    </div>
+                    <div class="mb-3">
+                        <label asp-for="CantidadProductos"></label>
+                        <input asp-for="CantidadProductos" disabled class="form-control" />
+                    </div>
+                    <button type="submit" class="btn btn-outline-danger" style="width:150px">Eliminar</button>
+                    <a asp-controller="Facturas" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
+                        Volver
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>

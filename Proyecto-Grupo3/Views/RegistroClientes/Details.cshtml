@@ -1,36 +1,70 @@
 ﻿@model Proyecto_Grupo3.Models.TRegistroCliente
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles Cliente";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>TRegistroCliente</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdentificacionCliente)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdentificacionCliente)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreCompleto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreCompleto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Correo)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Correo)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.IdCliente">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Detalles del Cliente</h1>
+            </div>
+            <h4 class="py-3">Cliente</h4>
+            <hr />
+            <div class="accordion mb-4" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            @Html.DisplayNameFor(model => model.IdCliente)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.IdCliente)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                            @Html.DisplayNameFor(model => model.IdentificacionCliente)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.IdentificacionCliente)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            @Html.DisplayNameFor(model => model.NombreCompleto)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.NombreCompleto)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseFour" aria-expanded="false" aria-controls="panelsStayOpen-collapseFour">
+                            @Html.DisplayNameFor(model => model.Correo)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseFour" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.Correo)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class=" w-70 btn-group" role="group">
+    <a asp-controller="RegistroClientes" asp-action="Index" class="btn btn-outline-secondary mx-2"> <i class="bi bi-pencil-square"></i>Volver</a>
 </div>

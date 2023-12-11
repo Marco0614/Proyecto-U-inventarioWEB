@@ -1,30 +1,58 @@
 ﻿@model Proyecto_Grupo3.Models.TProducto
 
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Detalles del Producto";
 }
 
-<h1>Details</h1>
-
-<div>
-    <h4>TProducto</h4>
-    <hr />
-    <dl class="row">
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.NombreProducto)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.NombreProducto)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.CodigoTipoProductoNavigation)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.CodigoTipoProductoNavigation.CodigoTipoProducto)
-        </dd>
-    </dl>
-</div>
-<div>
-    <a asp-action="Edit" asp-route-id="@Model?.NombreCategoria">Edit</a> |
-    <a asp-action="Index">Back to List</a>
+<main class="my-5">
+    <div class="containern p-3">
+        <div class=" row pt-4">
+            <div>
+                <h1 class="my-3">Detalles del Producto</h1>
+            </div>
+            <h4 class="py-3">Producto</h4>
+            <hr />
+            <div class="accordion mb-4" id="accordionPanelsStayOpenExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+                            @Html.DisplayNameFor(model => model.NombreCategoria)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.NombreCategoria)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="true" aria-controls="panelsStayOpen-collapseTwo">
+                            @Html.DisplayNameFor(model => model.NombreProducto)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse show">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.NombreProducto)
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+                            @Html.DisplayNameFor(model => model.CodigoTipoProducto)
+                        </button>
+                    </h2>
+                    <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                            @Html.DisplayFor(model => model.CodigoTipoProductoNavigation.CodigoTipoProducto)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+<div class=" w-70 btn-group" role="group">
+    <a asp-controller="Productos" asp-action="Index" class="btn btn-outline-secondary mx-2"> <i class="bi bi-pencil-square"></i>Volver</a>
 </div>
