@@ -59,6 +59,12 @@ namespace Proyecto_Grupo3.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (await _context.TRegistroUsuarios.AnyAsync(i => i.IdentificacionUsuario == tRegistroUsuario.IdentificacionUsuario))
+                {
+                    ModelState.AddModelError("", "La identificacion ingresado ya existe.");
+                    return View(tRegistroUsuario);
+                }
+
                 _context.Add(tRegistroUsuario);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
