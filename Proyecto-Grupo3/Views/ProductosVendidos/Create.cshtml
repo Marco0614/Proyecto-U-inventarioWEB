@@ -1,23 +1,23 @@
 ﻿@model Proyecto_Grupo3.Models.TProductosVendido
 
 @{
-    ViewData["Title"] = "Editar Producto en Stock";
+    ViewData["Title"] = "Agregar Producto al Stock";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<main class="my-5">
+<main class="mt-5">
     <div class="containern p-3">
         <div class=" row pt-4">
             <div>
-                <h1 class="my-3">Editar Producto en Inventario</h1>
+                <h1>Agregar Productos al inventario</h1>
             </div>
-            <form asp-action="Edit">
+            <form class="my-3" asp-action="Create">
                 <div class="border p-3 mt-4">
                     <div class="row pb-2">
-                        <h2 class="text-primary">Producto en Inventario</h2>
+                        <h2 class="text-primary">Producto al inventario</h2>
                         <hr />
                     </div>
                     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                    <input type="hidden" asp-for="CodigoProducto" />
                     <div class="mb-3">
                         <label asp-for="CodigoTipoProducto"></label>
                         <select asp-for="CodigoTipoProducto" class="form-control" asp-items="ViewBag.CodigoTipoProducto"></select>
@@ -30,7 +30,7 @@
                     </div>
                     <div class="mb-3">
                         <label asp-for="Precio"></label>
-                        <select asp-for="Precio" class="form-control" asp-items="ViewBag.IdCliente"></select>
+                        <input asp-for="Precio" class="form-control" />
                         <span asp-validation-for="Precio" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
@@ -38,8 +38,8 @@
                         @Html.DropDownListFor(u => u.Estado, new List<SelectListItem>
                         {
                         new SelectListItem() {Text = "Elija una opcion", Value = "Elija una opcion", Disabled = true, Selected = true},
-                        new SelectListItem() {Text = "Administrador", Value = "Activo"},
-                        new SelectListItem() {Text = "Vendedor", Value = "Inactivo"},
+                        new SelectListItem() {Text = "Activo", Value = "Activo"},
+                        new SelectListItem() {Text = "Inactivo", Value = "Inactivo"},
 
                         }, new { @class = "form-control" })
                         @Html.ValidationMessage("Estado")
@@ -50,7 +50,7 @@
                         <input asp-for="Cantidad" class="form-control" />
                         <span asp-validation-for="Cantidad" class="text-danger"></span>
                     </div>
-                    <button type="submit" class="btn btn-outline-primary" style="width:150px">Actualizar</button>
+                    <button type="submit" class="btn btn-outline-primary" style="width:150px">Crear</button>
                     <a asp-controller="ProductosVendidos" asp-action="Index" class="btn btn-outline-secondary" style="width:150px">
                         Volver
                     </a>
@@ -61,5 +61,8 @@
 </main>
 
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
 }
+
