@@ -60,12 +60,16 @@ namespace Proyecto_Grupo3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdFactura,CodigoFactura,FechaCompra,IdCliente,MetodoPago,Subtotal,Iva,Total,CodigoProducto,CantidadProductos")] TFactura tFactura)
         {
-            if (ModelState.IsValid)
+            try 
             {
                 _context.Add(tFactura);
                 await _context.SaveChangesAsync();
                 TempData["success"] = "La factura ha sido creado";
                 return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw;
             }
             ViewData["CodigoProducto"] = new SelectList(_context.TProductosVendidos, "CodigoProducto", "CodigoProducto", tFactura.CodigoProducto);
             ViewData["IdCliente"] = new SelectList(_context.TRegistroClientes, "IdCliente", "IdCliente", tFactura.IdCliente);
