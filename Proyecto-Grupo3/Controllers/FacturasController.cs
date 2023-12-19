@@ -10,7 +10,7 @@ using Proyecto_Grupo3.Models;
 
 namespace Proyecto_Grupo3.Controllers
 {
-    [Authorize(Roles = "Administrador,Vendedor,Contador")]
+    [Authorize(Roles = "Administrador,Vendedor,Contabilidad")]
     public class FacturasController : Controller
     {
         private readonly DB_FARMACIAContext _context;
