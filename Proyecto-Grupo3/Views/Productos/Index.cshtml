@@ -49,9 +49,9 @@
                     </td>
                     <td>
                         <div class=" w-75 btn-group" role="group">
-                            <a asp-controller="Productos" asp-action="Details" asp-route-id="item.NombreCategoria" class="btn btn-outline-info mx-2"> <i class="bi bi-info-circle"></i>Consultar</a>
-                            <a asp-controller="Productos" asp-action="Edit" asp-route-id="item.NombreCategoria" class="btn btn-outline-primary mx-2"> <i class="bi bi-pencil-square"></i>Editar</a>
-                            <a asp-controller="Productos" asp-action="Delete" asp-route-id="item.NombreCategoria" class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i>Eliminar</a>
+                            <a asp-controller="Productos" asp-action="Details" asp-route-id="@item.NombreCategoria" class="btn btn-outline-info mx-2"> <i class="bi bi-info-circle"></i>Consultar</a>
+                            <a asp-controller="Productos" asp-action="Edit" asp-route-id="@item.NombreCategoria" class="btn btn-outline-primary mx-2"> <i class="bi bi-pencil-square"></i>Editar</a>
+                            <a asp-controller="Productos" asp-action="Delete" asp-route-id="@item.NombreCategoria" class="btn btn-outline-danger mx-2"> <i class="bi bi-trash-fill"></i>Eliminar</a>
                         </div>
                     </td>
                 </tr>

@@ -58,12 +58,16 @@ namespace Proyecto_Grupo3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("CodigoProducto,CodigoTipoProducto,DescripcionProducto,Precio,Estado,Cantidad")] TProductosVendido tProductosVendido)
         {
-            if (ModelState.IsValid)
+            try 
             {
                 _context.Add(tProductosVendido);
                 await _context.SaveChangesAsync();
                 TempData["success"] = "El producto ha sido agregado al inventario";
                 return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw;
             }
             ViewData["CodigoTipoProducto"] = new SelectList(_context.TTiposProductos, "CodigoTipoProducto", "CodigoTipoProducto", tProductosVendido.CodigoTipoProducto);
             return View(tProductosVendido);

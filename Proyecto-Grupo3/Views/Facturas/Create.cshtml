@@ -34,8 +34,16 @@
                         <span asp-validation-for="IdCliente" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
-                        <label asp-for="MetodoPago"></label>
-                        <input asp-for="MetodoPago" class="form-control" />
+                        @Html.LabelFor(u => u.MetodoPago)
+                        @Html.DropDownListFor(u => u.MetodoPago, new List<SelectListItem>
+                        {
+                        new SelectListItem() {Text = "Elija una opcion", Value = "Elija una opcion", Disabled = true, Selected = true},
+                        new SelectListItem() {Text = "Efectivo", Value = "Efectivo"},
+                        new SelectListItem() {Text = "SINPE", Value = "SINPE"},
+                        new SelectListItem() {Text = "Tarjeta Credito/Debito", Value = "Tarjeta Credito/Debito"}
+
+                        }, new { @class = "form-control" })
+                        @Html.ValidationMessage("MetodoPago")
                         <span asp-validation-for="MetodoPago" class="text-danger"></span>
                     </div>
                     <div class="mb-3">
