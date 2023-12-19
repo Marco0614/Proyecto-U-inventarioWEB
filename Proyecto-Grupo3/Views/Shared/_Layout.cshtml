@@ -29,13 +29,13 @@
                             <li class="nav-item">
                                 <a class="nav-link active" asp-area="" asp-controller="Home" asp-action="Index">>Home</a>
                             </li>
-                            @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor") || User.IsInRole("Contador"))
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor") || User.IsInRole("Contabilidad"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link active" asp-area="" asp-controller="Facturas" asp-action="Index">>Facturas</a>
                                 </li>
                             }
-                            @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor") || User.IsInRole("Contador"))
+                            @if (User.IsInRole("Administrador") || User.IsInRole("Vendedor") || User.IsInRole("Contabilidad"))
                             {
                                 <li class="nav-item">
                                     <a class="nav-link active" asp-area="" asp-controller="FacturasUsuarios" asp-action="Index">>Facturas por Usuario</a>
