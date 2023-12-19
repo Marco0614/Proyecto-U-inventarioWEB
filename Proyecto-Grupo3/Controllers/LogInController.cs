@@ -36,7 +36,8 @@ namespace Proyecto_Grupo3.Controllers
 
             List<Claim> claims = new List<Claim>()
             {
-                new Claim(ClaimTypes.Name, UsuarioEncontrado.NombreCompleto)
+                new Claim(ClaimTypes.Name, UsuarioEncontrado.NombreCompleto),
+                new Claim(ClaimTypes.Role, UsuarioEncontrado.TipoUsuario)
             };
 
             ClaimsIdentity claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
