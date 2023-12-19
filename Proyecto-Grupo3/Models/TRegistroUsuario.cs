@@ -15,13 +15,11 @@ namespace Proyecto_Grupo3.Models
         [Display(Name = "Identificacion Usuario")]
         public string IdentificacionUsuario { get; set; } = null!;
 
-        [Required(ErrorMessage = "El campo Nombre es obligatorio.")]
-        [StringLength(50, MinimumLength = 3, ErrorMessage = "El Nombre debe tener al menos 3 caracteres y un máximo de 50 caracteres.")]
+        [Required]
         [Display(Name = "Nombre Completo")]
         public string NombreCompleto { get; set; } = null!;
 
-        [Required(ErrorMessage = "El campo Correo es obligatorio.")]
-        [EmailAddress(ErrorMessage = "El Correo debe tener un formato correcto de correo electrónico.")]
+        [Required]
         [Display(Name = "Correo Electronico")]
         public string Correo { get; set; } = null!;
 
