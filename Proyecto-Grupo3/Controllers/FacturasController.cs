@@ -64,6 +64,7 @@ namespace Proyecto_Grupo3.Controllers
             {
                 _context.Add(tFactura);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "La factura ha sido creado";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodigoProducto"] = new SelectList(_context.TProductosVendidos, "CodigoProducto", "CodigoProducto", tFactura.CodigoProducto);
@@ -107,6 +108,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tFactura);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "La factura ha sido editada";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -162,6 +164,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "La factura ha sido eliminada";
             return RedirectToAction(nameof(Index));
         }
 

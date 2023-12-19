@@ -61,6 +61,7 @@ namespace Proyecto_Grupo3.Controllers
             {
                 _context.Add(tRegistroCliente);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "El cliente ha sido creado";
                 return RedirectToAction(nameof(Index));
             }
             return View(tRegistroCliente);
@@ -100,6 +101,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tRegistroCliente);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "El cliente ha sido editado";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -151,6 +153,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "El cliente ha sido eliminado";
             return RedirectToAction(nameof(Index));
         }
 

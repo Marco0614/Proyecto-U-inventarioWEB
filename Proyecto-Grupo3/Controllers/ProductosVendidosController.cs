@@ -62,6 +62,7 @@ namespace Proyecto_Grupo3.Controllers
             {
                 _context.Add(tProductosVendido);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "El producto ha sido agregado al inventario";
                 return RedirectToAction(nameof(Index));
             }
             ViewData["CodigoTipoProducto"] = new SelectList(_context.TTiposProductos, "CodigoTipoProducto", "CodigoTipoProducto", tProductosVendido.CodigoTipoProducto);
@@ -103,6 +104,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tProductosVendido);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "El producto ha sido editado";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -156,6 +158,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "El produto ha sido eliminado";
             return RedirectToAction(nameof(Index));
         }
 

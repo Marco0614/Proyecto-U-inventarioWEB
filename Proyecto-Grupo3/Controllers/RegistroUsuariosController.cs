@@ -57,13 +57,17 @@ namespace Proyecto_Grupo3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,IdentificacionUsuario,NombreCompleto,Correo,TipoUsuario,Estado,Contraseña")] TRegistroUsuario tRegistroUsuario)
         {
-            if (ModelState.IsValid)
-            {
-                _context.Add(tRegistroUsuario);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
-            }
-            return View(tRegistroUsuario);
+            
+                if (ModelState.IsValid)
+                {
+                    _context.Add(tRegistroUsuario);
+                    await _context.SaveChangesAsync();
+                    TempData["success"] = "El usuario ha sido creado";
+                    return RedirectToAction(nameof(Index));
+
+                }
+                return View(tRegistroUsuario);
+            
         }
 
         // GET: RegistroUsuarios/Edit/5
@@ -100,6 +104,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tRegistroUsuario);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "El usuario ha sido editado";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -151,6 +156,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "El usuario ha sido eliminado";
             return RedirectToAction(nameof(Index));
         }
 

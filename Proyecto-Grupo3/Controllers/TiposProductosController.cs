@@ -61,6 +61,7 @@ namespace Proyecto_Grupo3.Controllers
             {
                 _context.Add(tTiposProducto);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "El tipo de producto ha sido creado";
                 return RedirectToAction(nameof(Index));
             }
             return View(tTiposProducto);
@@ -100,6 +101,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tTiposProducto);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "El tipo de producto ha sido editado";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -151,6 +153,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "El tipo de producto ha sido eliminado";
             return RedirectToAction(nameof(Index));
         }
 
