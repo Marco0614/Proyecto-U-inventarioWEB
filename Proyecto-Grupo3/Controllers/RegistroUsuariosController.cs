@@ -57,17 +57,21 @@ namespace Proyecto_Grupo3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdUsuario,IdentificacionUsuario,NombreCompleto,Correo,TipoUsuario,Estado,Contraseña")] TRegistroUsuario tRegistroUsuario)
         {
-            
-                if (ModelState.IsValid)
-                {
-                    _context.Add(tRegistroUsuario);
-                    await _context.SaveChangesAsync();
-                    TempData["success"] = "El usuario ha sido creado";
-                    return RedirectToAction(nameof(Index));
 
+            if (ModelState.IsValid)
+            {
+                if (await _context.TRegistroUsuarios.AnyAsync(i => i.IdentificacionUsuario == tRegistroUsuario.IdentificacionUsuario))
+                {
+                    ModelState.AddModelError("", "La identificacion ingresado ya existe.");
+                    return View(tRegistroUsuario);
                 }
-                return View(tRegistroUsuario);
-            
+
+                _context.Add(tRegistroUsuario);
+                await _context.SaveChangesAsync();
+                TempData["success"] = "El usuario ha sido creado";
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tRegistroUsuario);
         }
 
         // GET: RegistroUsuarios/Edit/5

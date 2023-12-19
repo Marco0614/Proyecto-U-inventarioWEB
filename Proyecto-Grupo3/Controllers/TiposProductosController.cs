@@ -59,6 +59,21 @@ namespace Proyecto_Grupo3.Controllers
         {
             if (ModelState.IsValid)
             {
+
+                //CREAREMOS UNA VALIDACION PARA QUE NO HAYA REPETICION DE UN CODIGO DE PRODUCTO
+                if (await _context.TTiposProductos.AnyAsync(i => i.CodigoTipoProducto == tTiposProducto.CodigoTipoProducto))
+                {
+                    ModelState.AddModelError("", "El Codigo del producto ingresado ya existe.");
+                    return View(tTiposProducto);
+                }
+
+                if (await _context.TTiposProductos.AnyAsync(i => i.DescripcionTipoProducto == null))
+                {
+                    ModelState.AddModelError("", "Por favor ingrese la descripcion del producto.");
+                    return View(tTiposProducto);
+                }
+
+
                 _context.Add(tTiposProducto);
                 await _context.SaveChangesAsync();
                 TempData["success"] = "El tipo de producto ha sido creado";
