@@ -6,6 +6,7 @@
     <title>@ViewData["Title"] - Farmacia</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="~/Proyecto_Grupo3.styles.css" asp-append-version="true" />
 </head>
 <body>
@@ -59,6 +60,8 @@
 
     <div class="container">
         <main role="main" class="pb-3">
+            @* Vista parcial para las notificaciones *@
+            <partial name="Notificaciones" />
             @RenderBody()
         </main>
     </div>

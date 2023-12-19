@@ -26,7 +26,7 @@ namespace Proyecto_Grupo3.Controllers
         }
 
         // GET: Productos/Details/5
-        public async Task<IActionResult> Details(string id)
+        public async Task<IActionResult> Details(string? id)
         {
             if (id == null || _context.TProductos == null)
             {
@@ -58,18 +58,23 @@ namespace Proyecto_Grupo3.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("NombreCategoria,CodigoTipoProducto,NombreProducto")] TProducto tProducto)
         {
-            if (ModelState.IsValid)
+            try 
             {
                 _context.Add(tProducto);
                 await _context.SaveChangesAsync();
+                TempData["success"] = "El producto ha sido creado";
                 return RedirectToAction(nameof(Index));
+            }
+            catch (Exception)
+            {
+                throw; 
             }
             ViewData["CodigoTipoProducto"] = new SelectList(_context.TTiposProductos, "CodigoTipoProducto", "CodigoTipoProducto", tProducto.CodigoTipoProducto);
             return View(tProducto);
         }
 
         // GET: Productos/Edit/5
-        public async Task<IActionResult> Edit(string id)
+        public async Task<IActionResult> Edit(string? id)
         {
             if (id == null || _context.TProductos == null)
             {
@@ -103,6 +108,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tProducto);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "El producto ha sido editado";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -122,7 +128,7 @@ namespace Proyecto_Grupo3.Controllers
         }
 
         // GET: Productos/Delete/5
-        public async Task<IActionResult> Delete(string id)
+        public async Task<IActionResult> Delete(string? id)
         {
             if (id == null || _context.TProductos == null)
             {
@@ -156,12 +162,13 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "El producto ha sido eliminado";
             return RedirectToAction(nameof(Index));
         }
 
         private bool TProductoExists(string id)
         {
-          return (_context.TProductos?.Any(e => e.NombreCategoria == id)).GetValueOrDefault();
+          return (_context.TProductos?.Any(e => e.NombreCategoria.ToString() == id)).GetValueOrDefault();
         }
     }
 }

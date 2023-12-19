@@ -107,6 +107,7 @@ namespace Proyecto_Grupo3.Controllers
                 {
                     _context.Update(tFacturasUsuario);
                     await _context.SaveChangesAsync();
+                    TempData["edit"] = "La factura ha sido editada";
                 }
                 catch (DbUpdateConcurrencyException)
                 {
@@ -162,6 +163,7 @@ namespace Proyecto_Grupo3.Controllers
             }
             
             await _context.SaveChangesAsync();
+            TempData["error"] = "La factura ha sido eliminada";
             return RedirectToAction(nameof(Index));
         }
 
